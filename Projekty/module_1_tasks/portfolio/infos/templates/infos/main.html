@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block title %}  {% endblock %}
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body id="top">
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <!-- site header
+    ================================================== -->
+    <header class="s-header">
+
+        <nav class="header-nav-wrap">
+            <ul class="header-main-nav">
+                <li><a class="smoothscroll" href="homepage" title="Homepage">Home</a></li>
+                <li><a class="smoothscroll" href="me" title="About Me">Me</a></li>
+                <li><a class="smoothscroll" href="contact" title="Contact">Contact</a></li>	
+            </ul>
+
+        </nav>
+
+        <h1>Witam na mojej stronie testowej!</h1>
+
+    </header> <!-- end s-header -->
+
+    <div id="inner-content">
+        {% block content %}
+            
+        {% endblock %}
+    </div>
+
+</body>
