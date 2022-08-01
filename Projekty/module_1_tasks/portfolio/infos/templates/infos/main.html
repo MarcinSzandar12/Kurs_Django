@@ -7,11 +7,13 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="author" content="">
-    {% block title %}  {% endblock %}
+    <center style="color:black;text-align:center;font-size: 40px;">{% block title %}  {% endblock %}</center>
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="style.css">
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'infos/css/style.css' %}">
 
 </head>
 

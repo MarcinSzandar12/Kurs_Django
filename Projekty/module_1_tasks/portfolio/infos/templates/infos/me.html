@@ -3,5 +3,9 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-Mam na imię Marcin. Interesuję się programowaniem.
+<div>
+    {% load static %}
+    <img src="{% static 'infos/img/men.png' %}" alt="Tutaj powinieneś widzieć moje zdjęcie :D" class="center">
+    <h3>Mam na imię Marcin. Interesuję się programowaniem.</h3>
+</div>
 {% endblock %}
