@@ -9,7 +9,7 @@
 {% for post in object_list %}
     <li><a href="{% url 'post_details' post.pk %}">{{ post.title }}</a> by {{ post.author }}  -  
     {% if user.is_authenticated %}
-    <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary">Edit</a>  -  <a href="{% url 'delete_post' post.pk %}" class="btn btn-primary">Delete</a><br>
+    <a href="{% url 'author_details' post.pk %}">Details of Author</a>  -  <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary">Edit</a>  -  <a href="{% url 'delete_post' post.pk %}" class="btn btn-primary">Delete</a><br>
     {% endif %}
     {{ post.content }}</li>
 {% endfor %}

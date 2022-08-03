@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from posts.models import Post
+from posts.models import Post, Author
 from posts.forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
@@ -31,3 +31,11 @@ class DeletePost(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+class AuthorList(ListView):
+    model = Post
+    template_name = 'author_list.html'
+
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name = 'author_details.html'
