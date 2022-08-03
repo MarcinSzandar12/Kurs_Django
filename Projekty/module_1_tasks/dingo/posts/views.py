@@ -33,7 +33,7 @@ class DeletePost(DeleteView):
     success_url = reverse_lazy('home')
 
 class AuthorList(ListView):
-    model = Post
+    model = Author
     template_name = 'author_list.html'
 
 class AuthorDetailView(DetailView):

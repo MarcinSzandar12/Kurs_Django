@@ -6,9 +6,9 @@
 <h1>List of Authors</h1>
 
 <ul>
-{% for post in object_list %}
+{% for author in object_list %}
     <li>
-        <a href="{% url 'author_details' post.pk %}">{{ post.author }}</a> 
+        <a href="{% url 'author_details' author.pk %}">{{ author.nick }}</a> 
     </li>
 {% endfor %}
 </ul>
