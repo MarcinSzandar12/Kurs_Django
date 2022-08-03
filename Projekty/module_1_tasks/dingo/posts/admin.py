@@ -1,6 +1,15 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Author
 
-admin.site.register(Post)
+class PostAdmin(admin.ModelAdmin):
+   list_display = ["id", "title", "content", "author"]
+   list_filter = ["author"]
+   search_fields = ["User"]
+
+admin.site.register(Post, PostAdmin)
+
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+   list_display = ['id', 'nick', 'email']
 
 
