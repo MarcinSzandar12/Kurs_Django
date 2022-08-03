@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import Homepage, PostDetailView, AddPost, EditPost, DeletePost, AuthorList, AuthorDetailView
 
+#app_name="posts"
 urlpatterns = [
    path('home', Homepage.as_view(), name='home'),
    path('post_detail/<int:pk>', PostDetailView.as_view(), name='post_details'),
