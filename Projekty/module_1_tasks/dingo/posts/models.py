@@ -6,12 +6,15 @@ class Post(models.Model):
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='photos/%Y/%m/%d')
+    tags = models.ManyToManyField("posts.Tag")
     author = models.ForeignKey(
         'posts.Author',
         on_delete=models.CASCADE,
         null=True,
         blank=True
     )
+    
     def __str__(self):
         return self.title + ' | ' + str(self.author)
 
@@ -26,3 +29,7 @@ class Author(models.Model):
     )
     def __str__ (self):
         return self.nick
+
+class Tag(models.Model):
+   word = models.CharField(max_length=50, unique=True)
+   created = models.DateTimeField(auto_now_add=True)

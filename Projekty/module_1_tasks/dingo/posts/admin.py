@@ -4,7 +4,7 @@ from .models import Post, Author
 class PostAdmin(admin.ModelAdmin):
    list_display = ["id", "title", "content", "author"]
    list_filter = ["author"]
-   search_fields = ["User"]
+   search_fields = ["title", "content"]
 
 admin.site.register(Post, PostAdmin)
 
