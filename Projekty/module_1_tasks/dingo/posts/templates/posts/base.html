@@ -16,7 +16,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">BlogPage</a>
+        <a class="navbar-brand" href="{% url 'posts:home' %}">BlogPage</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,13 +25,13 @@
           <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
+              <a class="nav-link" href="{% url 'posts:add_post' %}">Add Post</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'author_list' %}">List of Authors</a>
+              <a class="nav-link" href="{% url 'posts:author_list' %}">List of Authors</a>
             </li>
             {% else %}
             <li class="nav-item">

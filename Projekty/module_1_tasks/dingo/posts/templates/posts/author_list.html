@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'posts/base.html' %}
 {% block title %}List of Authors{% endblock %}
 
 {% block content %}
@@ -8,12 +8,12 @@
 <ul>
 {% for author in object_list %}
     <li>
-        <a href="{% url 'author_details' author.pk %}">{{ author.nick }}</a> 
+        <a href="{% url 'posts:author_details' author.pk %}">{{ author.nick }}</a> 
     </li>
 {% endfor %}
 </ul>
 <br>
 <br>
-<a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+<a href="{% url 'posts:home' %}" class="btn btn-primary">Back</a>
 
 {% endblock %}

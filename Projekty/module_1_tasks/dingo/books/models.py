@@ -1,15 +1,18 @@
 from django.db import models
 from django.urls import reverse
 
-class Post(models.Model):
+OPTIONS = (
+    ("hard", "Twarda okładka" ), 
+    ("soft","Miękka okładka")
+    )
+
+class Book(models.Model):
     title = models.CharField(max_length=50)
-    content = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
-    tags = models.ManyToManyField("posts.Tag")
+    description = models.TextField(max_length=500, blank=True, null=True)
+    cover = models.CharField(max_length=50, choices=OPTIONS, blank=True, null=True)
+    tags = models.ManyToManyField("books.Tag", blank=True)
     author = models.ForeignKey(
-        'posts.Author',
+        'books.Author',
         on_delete=models.CASCADE,
         null=True,
         blank=True
@@ -22,14 +25,13 @@ class Post(models.Model):
         return reverse('home')
 
 class Author(models.Model):
-    nick = models.CharField(max_length=50, blank=True, null=True, unique=True)
-    email = models.EmailField(
-        max_length=255,
-        unique=True
-    )
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
     def __str__ (self):
-        return self.nick
+        return self.first_name + ' ' + self.last_name
 
 class Tag(models.Model):
    word = models.CharField(max_length=50, unique=True)
    created = models.DateTimeField(auto_now_add=True)
+

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'posts/base.html' %}
 {% block title %}Author Details{% endblock %}
 
 {% block content %}
@@ -10,6 +10,6 @@
 </small>
 <br>
 <br>
-<a href="{% url 'author_list' %}" class="btn btn-primary">Back</a>
+<a href="{% url 'posts:author_list' %}" class="btn btn-primary">Back</a>
 
 {% endblock %}

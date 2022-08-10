@@ -3,6 +3,7 @@ from .views import Homepage, PostDetailView, AddPost, EditPost, DeletePost, Auth
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name="posts"
 urlpatterns = [
    path('home/', Homepage.as_view(), name='home'),
    path('post_detail/<int:pk>/', PostDetailView.as_view(), name='post_details'),

@@ -1,0 +1,20 @@
+{% extends 'books/base.html' %}
+{% block title %}Lista Książek{% endblock %}
+
+{% block content %}
+ 
+<h1>Lista Naszych Książek</h1>
+
+<ul>
+{% for book in object_list %}
+    <li>
+        <a href="{% url 'books:book_details' book.pk %}">{{ book.title }}</a>autorstwa: {{ book.author }} -  
+        <a href="{% url 'books:author_details' book.author.pk %}">O Autorze</a><br>
+    </li>
+{% endfor %}
+</ul>
+<br>
+<br>
+<a href="{% url 'books:home' %}" class="btn btn-primary">Wróć</a>
+
+{% endblock %}

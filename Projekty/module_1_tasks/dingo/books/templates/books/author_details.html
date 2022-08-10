@@ -1,0 +1,24 @@
+{% extends 'books/base.html' %}
+{% block title %}O Autorze{% endblock %}
+
+{% block content %}
+
+<h1>O Autorze</h1>
+<small>
+    Imię: {{ author.first_name }}
+    <br>
+    Nazwisko: {{ author.last_name }}
+    <br>
+    <br>
+    <h3>Dzieła tego autora dostępne w naszej bibliotece:</h3><br>
+    {% for book in works_list %}
+    <li>
+        <a href="{% url 'books:book_details' book.pk %}">{{ book }}</a> 
+    </li>
+    {% endfor %}
+</small>
+<br>
+<br>
+<a href="{% url 'books:author_list' %}" class="btn btn-primary">Wróć</a>
+
+{% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'maths',
     'posts',
     'members',
+    'books',
 ]
 
 MIDDLEWARE = [
