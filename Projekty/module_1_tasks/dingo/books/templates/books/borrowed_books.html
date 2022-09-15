@@ -8,15 +8,17 @@
     <br>
     <div class="row">
         {% for book in object_list %}
-            <br>
-            <div class="col-lg-4">
-                <img class="thumbnail" src="{{ book.book.imageURL }}" width="auto" height="400">
-                <div class="box-element product">
-                    <h6><strong><a href="{% url 'books:book_details' book.pk %}">{{ book }}</a></strong></h6>
-                    Data Wypożyczenia: {{ book.borrowed }}
-                    <a href="{% url 'books:return_book' book.id %}" class="btn btn-danger">Zwróć</a><br> 
+            {% if not book.returned %}
+                <br>
+                <div class="col-lg-4">
+                    <img class="thumbnail" src="{{ book.book.imageURL }}" width="auto" height="400">
+                    <div class="box-element product">
+                        <h6><strong><a href="{% url 'books:book_details' book.pk %}">{{ book }}</a></strong></h6>
+                        Data Wypożyczenia: {{ book.borrowed }}
+                        <a href="{% url 'books:return_book' book.id %}" class="btn btn-danger">Zwróć</a><br> 
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
     </div>
     <br>

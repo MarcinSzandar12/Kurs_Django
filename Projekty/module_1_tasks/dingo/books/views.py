@@ -51,8 +51,8 @@ class BorrowedBooks(ListView):
         return Borrow.objects.filter(user=self.request.user)
 
 def ReturnBook(request, id):
-    book = Book.objects.get(id=id)
-    borrow = book.borrow_set.filter(returned=None).last()
-    borrow.returned = now()
-    borrow.save()
+    book = Borrow.objects.get(id=id)
+    if book.returned==None:
+        book.returned = now()
+        book.save()
     return HttpResponseRedirect(reverse("books:borrowed_books"))

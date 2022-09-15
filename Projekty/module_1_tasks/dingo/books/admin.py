@@ -19,7 +19,7 @@ class AuthorAdmin(admin.ModelAdmin):
    list_display = ['id', 'first_name', 'last_name']
 
 class BorrowAdmin(admin.ModelAdmin):
-   list_display = ["book", "user", "borrowed", "returned"]
+   list_display = ["id", "book", "user", "borrowed", "returned"]
    search_fields = ["user"]
 
 admin.site.register(Borrow, BorrowAdmin)
