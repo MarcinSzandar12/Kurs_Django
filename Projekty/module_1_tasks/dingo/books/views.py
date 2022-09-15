@@ -1,12 +1,25 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from books.models import Book, Author
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView, DeleteView
+from books.models import *
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
+from django.utils.timezone import now
 
 class Homepage(ListView):
     model = Book
     template_name = 'books/home.html'
 
+def all_and_borrowed_books_count(request):
+    count_all= Book.objects.all().count()    
+    count_borrowed= Borrow.objects.all().count()    
+    context= {
+        'count_all':count_all,
+        'count_borrowed':count_borrowed
+        }        
+    return render(request, 'books/home.html', context)
+
 class BookList(ListView):
+    paginate_by = 3
     model = Book
     template_name = 'books/books_list.html'
 
@@ -15,6 +28,7 @@ class BookDetailView(DetailView):
     template_name = 'books/book_details.html'
 
 class AuthorList(ListView):
+    paginate_by = 4
     model = Author
     template_name = 'books/author_list.html'
 
@@ -22,14 +36,23 @@ class AuthorDetailView(DetailView):
     model = Author
     template_name = 'books/author_details.html'
 
-def author_books(request):
-    auth = Author.objects.all()
-    works = auth.book_set.all()
+def BorrowBook(request, id):
+    book = Book.objects.get(id=id)
+    user = request.user
+    Borrow.objects.create(book=book, user=user)
+    return HttpResponseRedirect(reverse('books:borrowed_books'))
 
-    works_list = list(works)
-    books = {"work_list" : works_list}
-    return render(
-        request=request,
-        template_name="books/author_details.html",
-        context=books
-    )
+class BorrowedBooks(ListView):
+    paginate_by = 3
+    model = Borrow
+    template_name = 'books/borrowed_books.html'
+
+    def get_queryset(self):
+        return Borrow.objects.filter(user=self.request.user)
+
+def ReturnBook(request, id):
+    book = Book.objects.get(id=id)
+    borrow = book.borrow_set.filter(returned=None).last()
+    borrow.returned = now()
+    borrow.save()
+    return HttpResponseRedirect(reverse("books:borrowed_books"))

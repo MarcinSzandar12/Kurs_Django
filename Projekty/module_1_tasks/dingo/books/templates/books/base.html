@@ -25,13 +25,13 @@
           <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Wyloguj</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{% url 'books:book_list' %}">Nasze Książki</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'books:author_list' %}">Nasi Autorzy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'books:borrowed_books' %}">Twoje książki</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -43,7 +43,19 @@
             {% endif %}            
           </ul>
         </div>
-      </nav>
+        {% if user.is_authenticated %}
+        <div>
+          <ul class="navbar-nav mr-auto">
+            <li>
+              <span class="navbar-text">Witaj, {{request.user}} | </span>
+            </li>
+            <li>
+              <span ><a  class="nav-link" href="{% url 'logout' %}">Wyloguj</a></span>
+            </li>
+          </ul>
+        </div>
+        {% endif %} 
+    </nav>
     <br>
     <br>
     <div class="container">

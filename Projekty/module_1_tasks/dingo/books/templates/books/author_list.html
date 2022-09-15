@@ -4,16 +4,43 @@
 {% block content %}
  
 <h1>Lista Naszych Autorów</h1>
+<br>
+<br>
+<div class="row">
+    {% for author in object_list %}
+        <br>
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{ author.imageURL }}" width="auto" height="400">
+            <div class="box-element author">
+                <h6><strong><a href="{% url 'books:author_details' author.pk %}">{{ author.first_name }} {{ author.last_name }}</a></strong></h6>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<br>
+<br>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-primary">&laquo; Pierwsza</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Poprzednia</a>
+        {% endif %}
 
-<ul>
-{% for author in object_list %}
-    <li>
-        <a href="{% url 'books:author_details' author.pk %}">{{ author.first_name }} {{ author.last_name }}</a> 
-    </li>
-{% endfor %}
+        <span class="current">
+            Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Następna</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">Ostatnia &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 </ul>
 <br>
 <br>
 <a href="{% url 'books:home' %}" class="btn btn-primary">Wróć</a>
+<br>
+<br>
 
 {% endblock %}

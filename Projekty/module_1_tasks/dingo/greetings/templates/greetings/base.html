@@ -1,0 +1,48 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>{% block title %}Witamy!{% endblock %}</title>
+
+   {% load static %}
+   <link rel="stylesheet" type="text/css" href="{% static 'greetings/css/style.css' %}">
+
+   {# Load CSS and JavaScript #}
+   {% bootstrap_css %}
+   {% bootstrap_javascript jquery='full' %}
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'posts:home' %}">Nasz Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'greetings:about' %}">O nas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'greetings:about' %}">Posty</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'greetings:about' %}">Biblioteka Online</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'greetings:about' %}">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

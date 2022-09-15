@@ -1,0 +1,51 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h3>Wypożyczone przez Ciebie książki:</h3>
+    <br>
+    <br>
+    <div class="row">
+        {% for book in object_list %}
+            <br>
+            <div class="col-lg-4">
+                <img class="thumbnail" src="{{ book.book.imageURL }}" width="auto" height="400">
+                <div class="box-element product">
+                    <h6><strong><a href="{% url 'books:book_details' book.pk %}">{{ book }}</a></strong></h6>
+                    Data Wypożyczenia: {{ book.borrowed }}
+                    <a href="{% url 'books:return_book' book.id %}" class="btn btn-danger">Zwróć</a><br> 
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="btn btn-primary">&laquo; Pierwsza</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Poprzednia</a>
+            {% endif %}
+
+            <span class="current">
+                Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Następna</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">Ostatnia &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% else %}
+    Nie jesteś zalogowany!
+    <a class="nav-link" href="{% url 'login' %}" class="btn btn-primary">Zaloguj się</a>
+{% endif %}
+<br>
+<br>
+<a href="{% url 'books:home' %}" class="btn btn-primary">Wróć</a>
+<br>
+<br>
+
+{% endblock %}

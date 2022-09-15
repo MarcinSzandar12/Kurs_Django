@@ -4,21 +4,30 @@
 {% block content %}
 
 <h1>O Autorze</h1>
-<small>
-    Imię: {{ author.first_name }}
-    <br>
-    Nazwisko: {{ author.last_name }}
-    <br>
-    <br>
-    <h3>Dzieła tego autora dostępne w naszej bibliotece:</h3><br>
-    {% for book in works_list %}
+<br>
+<br>
+<img class="thumbnail" src="{{ author.imageURL }}" width="auto" height="400">
+<br>
+Imię: {{ author.first_name }}
+<br>
+Nazwisko: {{ author.last_name }}
+<br>
+<br>
+{{ author.description }}
+<br>
+<br>
+<h3>Dzieła tego autora dostępne w naszej bibliotece:</h3><br>
+
+{% for book in author.book_set.all %}
     <li>
-        <a href="{% url 'books:book_details' book.pk %}">{{ book }}</a> 
+        <a href="{% url 'books:book_details' book.pk %}">{{ book.title }}</a> 
     </li>
-    {% endfor %}
-</small>
+{% endfor %}
+
 <br>
 <br>
 <a href="{% url 'books:author_list' %}" class="btn btn-primary">Wróć</a>
+<br>
+<br>
 
 {% endblock %}

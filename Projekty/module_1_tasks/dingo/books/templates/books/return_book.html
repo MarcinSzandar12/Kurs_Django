@@ -1,0 +1,23 @@
+{% extends 'books/base.html' %}
+{% block title %}Return Book{% endblock %}
+
+{% block content %}
+ 
+{% if user.is_authenticated %}
+
+    <h3>Oddajesz: {{ borrow.book }}</h3>
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <strong>Napewno chcesz zwrócić ten tytuł?</strong><br><br>
+            <button type="submit", name="book_id", value="{{ book.id }}" class="btn btn-danger">Tak</button>
+            <a href="{% url 'books:borrowed_books' %}" class="btn btn-success">Nie</a>
+        </form>
+    </div>
+{% else %}
+    Nie jesteś zalogowany!
+    <a class="nav-link" href="{% url 'login' %}" class="btn btn-primary">Zaloguj się</a>
+{% endif %}
+
+{% endblock %}

@@ -1,20 +1,48 @@
 {% extends 'books/base.html' %}
 {% block title %}Lista Książek{% endblock %}
-
+{% load static %}
 {% block content %}
  
 <h1>Lista Naszych Książek</h1>
+<br>
+<br>
+<div class="row">
+    {% for book in object_list %}
+        <br>
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{ book.imageURL }}" width="auto" height="400">
+            <div class="box-element product">
+                <h6><strong><a href="{% url 'books:book_details' book.pk %}">{{ book.title }}</a></strong></h6>
+                autorstwa: {{ book.author }} 
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<br>
+<br>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-primary">&laquo; Pierwsza</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Poprzednia</a>
+        {% endif %}
 
-<ul>
-{% for book in object_list %}
-    <li>
-        <a href="{% url 'books:book_details' book.pk %}">{{ book.title }}</a>autorstwa: {{ book.author }} -  
-        <a href="{% url 'books:author_details' book.author.pk %}">O Autorze</a><br>
-    </li>
-{% endfor %}
-</ul>
+        <span class="current">
+            Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Następna</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">Ostatnia &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 <br>
 <br>
 <a href="{% url 'books:home' %}" class="btn btn-primary">Wróć</a>
+<br>
+<br>
 
 {% endblock %}
+
+

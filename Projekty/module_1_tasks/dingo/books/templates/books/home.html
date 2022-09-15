@@ -1,10 +1,23 @@
 {% extends 'books/base.html' %}
 {% block title %}Home{% endblock %}
 
+{% load static %}
+
 {% block content %}
  
-<h1>Witaj w naszej Bobliotece Internetowej!</h1>
+<center><h1>Witaj w naszej Bobliotece Internetowej!</h1></center>
 <br>
-<h3>Nowoczesnej wypożyczalni książek online!</h3>
-
+<center><h3>Nowoczesnej wypożyczalni książek online!</h3></center>
+<br>
+<div>
+    <img src="{% static 'books/static/img/home.jpg' %}" width="1100" height="auto">
+</div>
+<br>
+<br>
+<center><strong>Liczba wszystkich książek w naszej bibliotece: {{ count_all }}</strong></center>
+<center><strong>Liczba wypożyczonych książek w naszej bibliotece: {{ count_borrowed }}</strong></center>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}

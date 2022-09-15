@@ -5,13 +5,36 @@
 
 <h1>{{ book.title }}</h1>
 <br>
-<small>
-    Autorstwa: {{ book.author }}
-</small>
 <br>
-{{ book.description }}
+<img class="thumbnail" src="{{ book.imageURL }}" width="auto" height="400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="display:inline-block;vertical-align:top;">
+    Autorstwa: {{ book.author }} - <a href="{% url 'books:author_details' book.author.pk %}">O Autorze</a>
+    <br>
+    <br>
+    <h4>Opis książki</h4>
+    {{ book.description }}
+    <br>
+    <br>
+    Status: {{ book.is_available }}
+    <br>
+    <br>
+    {% if user.is_authenticated %}
+        {%  if not book.is_available %}
+            <a href="{% url 'books:return_book' book.id %}" class="btn btn-danger">Zwróć</a><br>
+        {% else %}
+            <div class="form-group" enctype='multipart/form-data'>
+                <form action="{% url 'books:borrow_book' book.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit", name="book_id", value="{{ book.id }}" class="btn btn-success">Wypożycz</button>
+                </form>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
 <br>
 <br>
-<a href="{% url 'books:home' %}" class="btn btn-primary">Wróć</a>
+<a href="{% url 'books:book_list' %}" class="btn btn-primary">Wróć</a>
+<br>
+<br>
 
 {% endblock %}
