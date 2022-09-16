@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from django.utils.translation import gettext_lazy as _
 import django.utils.translation
+import django_heroku
 django.utils.translation.ugettext = _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,10 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-kqrnjs4pnen58rf2@ha(evk@6$&+ff&x&!c+9t%*lwz(+ehhc@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 
 # Application definition
 
@@ -128,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -137,10 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'books:home'
 LOGOUT_REDIRECT_URL = 'books:home'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+django_heroku.settings(locals())
 
-MEDIA_URL = '/img/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "static/img")
