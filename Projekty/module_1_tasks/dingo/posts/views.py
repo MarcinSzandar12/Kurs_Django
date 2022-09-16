@@ -4,9 +4,6 @@ from posts.models import Post, Author
 from posts.forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
-#def home(request):
-#    return render(request, 'home.html', {})
-
 class Homepage(ListView):
     model = Post
     template_name = 'posts/home.html'
@@ -20,7 +17,6 @@ class AddPost(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'posts/add_post.html'
-    #fields = '__all__'
 
 class EditPost(UpdateView):
     model = Post
