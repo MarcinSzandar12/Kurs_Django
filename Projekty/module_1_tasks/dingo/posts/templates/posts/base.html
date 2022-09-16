@@ -16,7 +16,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'posts:home' %}">BlogPage</a>
+        <a class="navbar-brand" href="{% url 'posts:home' %}">POSTY</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,24 +25,44 @@
           <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'posts:add_post' %}">Add Post</a>
+              <a class="nav-link" href="{% url 'posts:add_post' %}">Dodaj Post</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-link" href="{% url 'posts:author_list' %}">Autorzy</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'posts:author_list' %}">List of Authors</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Nasze Apki
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'posts:home' %}">Posty</a>
+                <a class="dropdown-item" href="{% url 'books:home' %}">Biblioteka</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'greetings:welcome' %}">Strona Główna</a>
+              </div>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-link" href="{% url 'login' %}">Zaloguj</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register</a>
+              <a class="nav-link" href="{% url 'register' %}">Zarejestruj</a>
             </li>
-            {% endif %}            
+            {% endif %}
           </ul>
         </div>
+            {% if user.is_authenticated %}
+            <div>
+              <ul class="navbar-nav mr-auto">
+                <li>
+                    <span class="navbar-text">Witaj, {{request.user}} | </span>
+                </li>
+                <li>
+                    <span ><a  class="nav-link" href="{% url 'logout' %}">Wyloguj</a></span>
+                </li>
+              </ul>
+            </div>
+        {% endif %}             
       </nav>
     <br>
     <br>

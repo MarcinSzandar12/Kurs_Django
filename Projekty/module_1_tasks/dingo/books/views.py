@@ -5,7 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.utils.timezone import now
 
-class Homepage(ListView):
+class LibHomepage(ListView):
     model = Book
     template_name = 'books/home.html'
 
@@ -46,6 +46,14 @@ class BorrowedBooks(ListView):
     paginate_by = 3
     model = Borrow
     template_name = 'books/borrowed_books.html'
+
+    def get_queryset(self):
+        return Borrow.objects.filter(user=self.request.user).filter(returned=None)
+
+class BorrowHistory(ListView):
+    paginate_by = 10
+    model = Borrow
+    template_name = 'books/borrow_history.html'
 
     def get_queryset(self):
         return Borrow.objects.filter(user=self.request.user)

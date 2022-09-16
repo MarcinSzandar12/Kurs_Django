@@ -1,0 +1,54 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h3>Historia Twoich wypożyczeń:</h3>
+    <br>
+    <br>
+    <div>
+        {% for book in object_list %}
+                <br>
+                <div class="col-lg-4">
+                    <div class="box-element product">
+                        <ul>
+                            <li>
+                                <h6><strong>Tytuł: {{ book }}</strong></h6>
+                                <h6><strong>Data Wypożyczenia: {{ book.borrowed }}</strong></h6>
+                                <h6><strong>Data zwrotu: {{ book.returned }}</strong></h6>                                
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="btn btn-primary">&laquo; Pierwsza</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Poprzednia</a>
+            {% endif %}
+
+            <span class="current">
+                Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Następna</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">Ostatnia &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% else %}
+    Nie jesteś zalogowany!
+    <a class="nav-link" href="{% url 'login' %}" class="btn btn-primary">Zaloguj się</a>
+{% endif %}
+<br>
+<br>
+<a href="{% url 'books:home' %}" class="btn btn-primary">Wróć</a>
+<br>
+<br>
+
+{% endblock %}
