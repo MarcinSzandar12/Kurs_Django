@@ -1,0 +1,22 @@
+[
+{
+    "model": "books.author",
+    "pk": 1,
+    "fields": {
+        "first_name": "Andrzej",
+        "last_name": "Sapkowski",
+        "description": "Urodzony siê 21 czerwca 1948 w £odzi – polski pisarz fantasy, z wykszta³cenia ekonomista. Twórca postaci wiedŸmina. Jest najczêœciej po Stanis³awie Lemie t³umaczonym polskim autorem fantastyki.\r\n\r\nW 2012 roku minister kultury i dziedzictwa narodowego Bogdan Zdrojewski odznaczy³ go srebrnym medalem Gloria Artis.",
+        "image": "AS.jpg"
+    }
+},
+{
+    "model": "books.author",
+    "pk": 2,
+    "fields": {
+        "first_name": "Stephen",
+        "last_name": "King",
+        "description": "Urodzony 21 wrzeœnia 1947 w Portland – amerykañski pisarz specjalizuj¹cy siê w literaturze grozy. W przesz³oœci wydawa³ ksi¹¿ki pod pseudonimem Richard Bachman, raz jako John Swithen. Jego ksi¹¿ki rozesz³y siê w nak³adzie przekraczaj¹cym 350 milionów egzemplarzy, co czyni go jednym z najbardziej poczytnych pisarzy na œwiecie.",
+        "image": "SK.jpg"
+    }
+}
+]

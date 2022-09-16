@@ -1,11 +1,11 @@
 from unittest import TestCase
 from django.urls import resolve
-from books.views import Homepage, BookList, BookDetailView, BorrowedBooks, AuthorList, AuthorDetailView, BorrowHistory
+from books.views import LibHomepage, BookList, BookDetailView, BorrowedBooks, AuthorList, AuthorDetailView, BorrowHistory
 
 class TestUrls(TestCase):
    def test_resolution_for_homepage(self):
        resolver = resolve('home/')
-       self.assertEqual(resolver.func, Homepage)
+       self.assertEqual(resolver.func, LibHomepage)
 
    def test_resolution_for_booklist(self):
        resolver = resolve('books_list/')

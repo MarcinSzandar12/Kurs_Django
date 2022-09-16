@@ -1,0 +1,226 @@
+[
+{
+    "model": "books.book",
+    "pk": 1,
+    "fields": {
+        "title": "Wiedümin TOM I \"Ostatnie øyczenie\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT1C_r4OpAog.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 2,
+    "fields": {
+        "title": "Wiedümin TOM II \"Miecz przeznaczenia\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT2C.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+        "title": "Wiedümin TOM III \"Krew elfÛw\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT3C.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+        "title": "Wiedümin TOM IV \"Czas pogardy\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT4C.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+        "title": "Wiedümin TOM V \"Chrzest ognia\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT5C.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+        "title": "Wiedümin TOM VI \"Wieøa JaskÛ≥ki\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT6C.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 7,
+    "fields": {
+        "title": "Wiedümin TOM VII \"Pani Jeziora\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT7C.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 8,
+    "fields": {
+        "title": "Wiedümin TOM VIII \"Sezon burz\"",
+        "description": "",
+        "cover": "soft",
+        "image": "WT8C.jpg",
+        "author": 1,
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 9,
+    "fields": {
+        "title": "\"To\"",
+        "description": "",
+        "cover": "soft",
+        "image": "SKT.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 10,
+    "fields": {
+        "title": "\"Lúnienie\"",
+        "description": "",
+        "cover": "soft",
+        "image": "SKL.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 11,
+    "fields": {
+        "title": "\"SmÍtarz dla zwierzakÛw\"",
+        "description": "",
+        "cover": "soft",
+        "image": "SKSDZ.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 12,
+    "fields": {
+        "title": "\"Zielona mila\"",
+        "description": "",
+        "cover": "soft",
+        "image": "SKZM.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 13,
+    "fields": {
+        "title": "\"The Outsider\"",
+        "description": "",
+        "cover": "soft",
+        "image": "SKO.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 14,
+    "fields": {
+        "title": "\"Cztery Pory Roku\"",
+        "description": "",
+        "cover": "hard",
+        "image": "SKCPR.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 15,
+    "fields": {
+        "title": "\"Doktor Sen\"",
+        "description": "",
+        "cover": "hard",
+        "image": "SKDS.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+},
+{
+    "model": "books.book",
+    "pk": 16,
+    "fields": {
+        "title": "\"£owca snÛw\"",
+        "description": "",
+        "cover": "hard",
+        "image": "SK£S.jpg",
+        "author": 2,
+        "tags": [
+            2
+        ]
+    }
+}
+]

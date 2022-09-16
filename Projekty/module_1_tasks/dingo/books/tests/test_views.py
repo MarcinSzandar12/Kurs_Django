@@ -15,9 +15,9 @@ class TestViews(TestCase):
         self.author_list_url = reverse('author_list')
         self.author_details_url = reverse('author_details', args=['1'])
 
-        self.book1 = Book.objects.create(id='1', title="Book 1")
-        self.author1 = Author.objects.create(id='1', first_name="Pogram", last_name="Tester")
-        self.borrow1 = Borrow.objects.create(id='1', book="Book 2", user="User_Tester")
+        self.book1 = Book.objects.create(id=1, title="Book 1")
+        self.author1 = Author.objects.create(id=1, first_name="Pogram", last_name="Tester")
+        self.borrow1 = Borrow.objects.create(id=1, book=self.book1, )
 
 
 
